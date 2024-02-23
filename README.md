@@ -73,10 +73,15 @@ ____
 Локальный запуск.
 Из корневой директории проекта выполнить:
 ```
-gradle clean all_tests  запуск всех тестов
-gradle clean smoke_tests  запуск smoke сьюта
-gradle clean regress_tests запуск regress сьюта 
+./gradlew all_tests -Denv=local    
 ```
+
+Удаленный запуск.
+Из корневой директории проекта выполнить:
+```
+./gradlew all_tests -Denv=remote -Dlogin=user1 -Dpassword=1234
+```
+
 ____
 <a id="jenkins"></a>
 ## <img width="4%" style="vertical-align:middle" title="Jenkins" src="media/logo/Jenkins.svg"> </a> Сборка в <a target="_blank" href="https://jenkins.autotests.cloud/job/BirdsAutotests/"> Jenkins </a>
@@ -84,12 +89,13 @@ ____
 
 Для запуска сборки необходимо перейти в раздел <code>Build with parameters</code>, выбрать необходимые параметры и нажать кнопку <code>Build</code>.
 ###  Параметры сборки в Jenkins:
-- TASK (набор тестов для запуска)
-- URL (адрес основной страницы тестируемого сайта)
-- SELENOID (адрес удаленного сервера, на котором будут выполняться тесты)
+- TASK (набор тестов для запуска (Доступы all_tests, smoke_tests, regress_tests))
 - SIZE (размер окна браузера, по умолчанию 1920x1080)
 - VERSION (версия браузера, по умолчанию 100.0. Реализован запуск в Firefox на версиях 98.0 и 97.0, а также Chrome 99.0 и 100.0 )
 - BROWSER (браузер, по умолчанию chrome)
+- ENV (Окружение, по умолчанию Remote)
+- LOGIN (Логин для подключения к Selenoid)
+- PASSWORD (Пароль для подключения к Selenoid)
 <p align="center">
 <img title="Jenkins Build" src="media/screenshots/Jenkins.png">
 </p>
