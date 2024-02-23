@@ -8,7 +8,12 @@ repositories {
 }
 
 def allureVersion = "2.21.0",
-    selenideVersion = "6.19.1"
+    selenideVersion = "6.19.1",
+    ownerVersion = "1.0.12",
+    jUnitVersion = "5.10.0",
+    slf4jVersion ="2.0.7",
+    fakerVersion = "1.0.2"
+
 
 allure {
     report {
@@ -25,12 +30,14 @@ allure {
 }
 
 dependencies {
+    runtimeOnly group: 'org.aspectj', name: 'aspectjrt', version: '1.9.19'
     testImplementation(
             "com.codeborne:selenide:$selenideVersion",
             "io.qameta.allure:allure-selenide:$allureVersion",
-            "org.junit.jupiter:junit-jupiter:5.10.0",
-            'org.slf4j:slf4j-simple:2.0.7',
-            'com.github.javafaker:javafaker:1.0.2'
+            "org.junit.jupiter:junit-jupiter:$jUnitVersion",
+            "org.slf4j:slf4j-simple:$slf4jVersion",
+            "com.github.javafaker:javafaker:$fakerVersion",
+            "org.aeonbits.owner:owner:$ownerVersion",
     )
 }
 
@@ -51,6 +58,11 @@ task all_tests(type: Test) {
         includeTags("all-tests")
     }
 }
+
+
+
+
+
 
 task smoke_tests(type: Test) {
     useJUnitPlatform {

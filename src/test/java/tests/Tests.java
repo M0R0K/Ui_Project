@@ -1,15 +1,9 @@
 package tests;
 
-
-import data.TestData;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import pages.BirdGuidePage;
-import pages.BirdPage;
-import pages.MainPage;
-import pages.SearchPage;
 
 import static io.qameta.allure.Allure.step;
 
@@ -18,11 +12,6 @@ import static io.qameta.allure.Allure.step;
 @Tag("all-tests")
 public class Tests extends TestBase {
 
-    MainPage mainPage = new MainPage();
-    SearchPage searchPage = new SearchPage();
-    BirdPage birdPage = new BirdPage();
-    BirdGuidePage birdGuidePage = new BirdGuidePage();
-    TestData data = new TestData();
 
     @Test
     @Feature("Поиск")
@@ -33,6 +22,7 @@ public class Tests extends TestBase {
     void searchBird() {
         step("Открываем главную cтраницу", () -> {
             mainPage.openPage();
+            mainPage.closeInfoWindow();
         });
         step("Вводим поисковый запрос: " + data.randomBird, () -> {
             mainPage.fillSearchInput(data.randomBird);
@@ -56,6 +46,7 @@ public class Tests extends TestBase {
     void searchBirdEmpty() {
         step("Открываем главную cтраницу", () -> {
             mainPage.openPage();
+            mainPage.closeInfoWindow();
         });
 
         step("Вводим поисковый запрос: " + data.emptySearchResult, () -> {
@@ -80,6 +71,7 @@ public class Tests extends TestBase {
     void checkBirdVideo() {
         step("Открываем главную cтраницу", () -> {
             mainPage.openPage();
+            mainPage.closeInfoWindow();
         });
         step("Вводим поисковый запрос: " + data.birdsWithVideo, () -> {
             mainPage.fillSearchInput(data.birdsWithVideo);
@@ -108,6 +100,7 @@ public class Tests extends TestBase {
     void checkBirdAudio() {
         step("Открываем главную cтраницу", () -> {
             mainPage.openPage();
+            mainPage.closeInfoWindow();
         });
         step("Вводим поисковый запрос: " + data.birdsWithAudio, () -> {
             mainPage.fillSearchInput(data.birdsWithAudio);
@@ -135,6 +128,7 @@ public class Tests extends TestBase {
     void CheckBirdGuide() {
         step("Открываем страницу конструктора", () -> {
             birdGuidePage.openPage();
+            mainPage.closeInfoWindow();
         });
         step("Выбираем силуэт", () -> {
             birdGuidePage.selectSilhoette();

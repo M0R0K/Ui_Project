@@ -1,34 +1,36 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import config.ProjectConfiguration;
+import data.TestData;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.openqa.selenium.remote.DesiredCapabilities;
-
-import java.util.Map;
+import org.junit.jupiter.api.BeforeEach;
+import pages.BirdGuidePage;
+import pages.BirdPage;
+import pages.MainPage;
+import pages.SearchPage;
 
 public class TestBase {
+    static ProjectConfiguration projectConfiguration = new ProjectConfiguration();
+    MainPage mainPage = new MainPage();
+    SearchPage searchPage = new SearchPage();
+    BirdPage birdPage = new BirdPage();
+    BirdGuidePage birdGuidePage = new BirdGuidePage();
+    TestData data = new TestData();
 
 
     @BeforeAll
-    static void beforeAll() {
-        Configuration.remote = System.getProperty("selenoid", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
-        Configuration.baseUrl = System.getProperty("baseUrl", "https://ptici.info/");
-        Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.browserVersion = System.getProperty("browserVersion", "100.0");
-        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
+    public static void beforeAll() {
+        projectConfiguration.configure();
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                "enableVNC", true,
-                "enableVideo", true
-        ));
-        Configuration.browserCapabilities = capabilities;
+    }
 
+    @BeforeEach
+    void addListener() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 
