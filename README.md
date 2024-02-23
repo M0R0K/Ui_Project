@@ -81,7 +81,7 @@ ____
 ```
 ./gradlew all_tests -Denv=remote -Dlogin=user1 -Dpassword=1234
 ```
-
+Логин и пароль в самих тестах скрыты и приведены тут в качестве примера. В реальной ситуации они задаются пользователем в сборке Jenkins
 ____
 <a id="jenkins"></a>
 ## <img width="4%" style="vertical-align:middle" title="Jenkins" src="media/logo/Jenkins.svg"> </a> Сборка в <a target="_blank" href="https://jenkins.autotests.cloud/job/BirdsAutotests/"> Jenkins </a>
