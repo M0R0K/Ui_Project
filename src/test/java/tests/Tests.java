@@ -5,11 +5,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+
 import static io.qameta.allure.Allure.step;
 
-
-@DisplayName("Тесты на вебсайт 'Птицы России'")
-@Tag("all-tests")
 public class Tests extends TestBase {
 
 
@@ -28,7 +26,7 @@ public class Tests extends TestBase {
             mainPage.fillSearchInput(data.randomBird);
         });
         step("Нажимаем на кнопку поиска", () -> {
-            mainPage.search();
+            mainPage.searchBtnClick();
         });
 
         step("Проверяем наличие результата поиска", () -> {
@@ -54,7 +52,7 @@ public class Tests extends TestBase {
         });
 
         step("Нажимаем на кнопку поиска", () -> {
-            mainPage.search();
+            mainPage.searchBtnClick();
         });
 
         step("Проверяем заглушку при отсутствии результатов поиска", () -> {
@@ -77,7 +75,7 @@ public class Tests extends TestBase {
             mainPage.fillSearchInput(data.birdsWithVideo);
         });
         step("Нажимаем на кнопку поиска", () -> {
-            mainPage.search();
+            mainPage.searchBtnClick();
         });
         step("Открываем ссылку поискового результата", () -> {
             searchPage.openSearchLink();
@@ -106,7 +104,7 @@ public class Tests extends TestBase {
             mainPage.fillSearchInput(data.birdsWithAudio);
         });
         step("Нажимаем на кнопку поиска", () -> {
-            mainPage.search();
+            mainPage.searchBtnClick();
         });
         step("Открываем ссылку поискового результата", () -> {
             searchPage.openSearchLink();
@@ -131,7 +129,7 @@ public class Tests extends TestBase {
             mainPage.closeInfoWindow();
         });
         step("Выбираем силуэт", () -> {
-            birdGuidePage.selectSilhoette();
+            birdGuidePage.selectSilhouette();
         });
         step("Выбираем цвет", () -> {
             birdGuidePage.selectColour();
@@ -147,4 +145,45 @@ public class Tests extends TestBase {
             birdPage.checkTitlePage(data.birdGuide);
         });
     }
+
+
+    @Test
+    @Feature("Поиск")
+    @Owner("Konstantin Ponomarenko")
+    @Severity(SeverityLevel.MINOR)
+    @DisplayName("Проверка отображения птиц водоемов")
+    @Tag("smoke")
+    void CheckWaterBirds() {
+        step("Открываем cтраницу птиц водоемов", () -> {
+            waterBirdsPage.openPage();
+            mainPage.closeInfoWindow();
+        });
+
+        step("Проверяем наличие птицы в списке", () -> {
+            waterBirdsPage.checkBirdInList(data.waterBirds);
+        });
+
+
+    }
+
+    @Test
+    @Feature("Поиск")
+    @Owner("Konstantin Ponomarenko")
+    @Severity(SeverityLevel.MINOR)
+    @DisplayName("Проверка отображения птиц леса")
+    @Tag("smoke")
+    void CheckForestBirds() {
+        step("Открываем cтраницу птиц леса", () -> {
+            forestBirdsPage.openPage();
+            mainPage.closeInfoWindow();
+        });
+
+        step("Проверяем наличие птицы в списке", () -> {
+            forestBirdsPage.checkBirdInList(data.forestBirds);
+        });
+
+
+    }
+
+
 }

@@ -13,6 +13,6 @@ public interface AuthConfig extends Config {
 
     String password();
 
-    @Key("remoteUrl")
+
     String remoteUrl();
 }

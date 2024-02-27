@@ -9,10 +9,7 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import pages.BirdGuidePage;
-import pages.BirdPage;
-import pages.MainPage;
-import pages.SearchPage;
+import pages.*;
 
 public class TestBase {
     static ProjectConfiguration projectConfiguration = new ProjectConfiguration();
@@ -20,6 +17,8 @@ public class TestBase {
     SearchPage searchPage = new SearchPage();
     BirdPage birdPage = new BirdPage();
     BirdGuidePage birdGuidePage = new BirdGuidePage();
+    WaterBirdsPage waterBirdsPage = new WaterBirdsPage();
+    ForestBirdsPage forestBirdsPage = new ForestBirdsPage();
     TestData data = new TestData();
 
 

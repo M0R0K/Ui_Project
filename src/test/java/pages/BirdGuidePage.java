@@ -16,7 +16,7 @@ public class BirdGuidePage {
         return this;
     }
 
-    public BirdGuidePage selectSilhoette() {
+    public BirdGuidePage selectSilhouette() {
         swanSilhouette.click();
         return this;
     }

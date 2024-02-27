@@ -16,9 +16,8 @@ public class ProjectConfiguration {
         Configuration.browserVersion = webConfig.browserVersion();
         Configuration.browserSize = webConfig.browserSize();
         Configuration.pageLoadStrategy = "eager";
-        String remoteUrl = "https://" + authconfig.login() + ":" + authconfig.password() + "@" + authconfig.remoteUrl() + "/wd/hub";
         if (webConfig.isRemote()) {
-            Configuration.remote = remoteUrl;
+            Configuration.remote = "https://" + authconfig.login() + ":" + authconfig.password() + "@" + authconfig.remoteUrl() + "/wd/hub";
             Configuration.pageLoadStrategy = "normal";
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("selenoid:options", Map.<String, Object>of(

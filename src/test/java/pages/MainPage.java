@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.visible;
@@ -17,7 +18,7 @@ public class MainPage {
     infoWindowButton = $("[class^='fc-button']");
 
     public MainPage openPage() {
-        open("https://ptici.info/");
+        open(Configuration.baseUrl);
         searchInput.shouldBe(visible);
         return this;
     }
@@ -35,7 +36,7 @@ public class MainPage {
         return this;
     }
 
-    public MainPage search() {
+    public MainPage searchBtnClick() {
         searchButton.click();
         return this;
     }
