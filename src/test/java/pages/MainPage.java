@@ -18,7 +18,7 @@ public class MainPage {
     infoWindowButton = $("[class^='fc-button']");
 
     public MainPage openPage() {
-        open(Configuration.baseUrl);
+        open("");
         searchInput.shouldBe(visible);
         return this;
     }
